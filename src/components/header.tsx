@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Header() {
 
-  const user = true;
+  const user = false;
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
