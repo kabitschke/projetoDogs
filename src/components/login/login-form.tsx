@@ -3,6 +3,8 @@ import login from "@/actions/login";
 import { useFormState, useFormStatus } from "react-dom";
 import Button from "@/components/forms/button";
 import React from "react";
+import Input from "@/components/forms/input";
+import ErrorMessage from "../helper/error-message";
 //DEU erro useFormState substitui por  React.useActionState
 
 function FormButton() {
@@ -20,15 +22,29 @@ export default function LoginForm() {
   });
 
 
+  React.useEffect(() => {
+    if (state.ok) window.location.href = '/conta';
 
+  }, [state.ok]);
 
   return (
     <>
       <form action={action}>
-        <input type="text" name="username" placeholder="Usuário" />
-        <input type="password" name="password" placeholder="Senha" />
+        <Input
+          label={'Usuário'}
+          name={'username'}
+          type="text"
+        />
+
+        <Input
+          label={'Senha'}
+          name={'password'}
+          type="password"
+        />
+        <ErrorMessage error={state.error} />
+
         <FormButton />
-        <p style={{ color: 'red' }}>{state.error}</p>
+
       </form>
 
     </>
