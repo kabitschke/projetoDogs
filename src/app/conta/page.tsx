@@ -1,3 +1,16 @@
+'use client';
+import { useUser } from "@/context/user-context";
+import React from "react";
+
 export default async function ContaPage() {
-  return <main><h1>Conta</h1></main>
+
+
+  const { user } = useUser();
+  console.log(user);
+  return (
+    <div>
+      <h1 onClick={() => console.log('teste')}>Conta:{user?.nome}</h1>
+
+    </div>
+  );
 }
