@@ -30,7 +30,7 @@ export default async function FotoIDPage({ params }: FotoIdParams) {
   return (
     <section className="container mainContainer">
       <PhotoContent data={data} single={true} />
-      <h1>Foto id: {data.photo.title}</h1>
+
     </section>
 
   );
