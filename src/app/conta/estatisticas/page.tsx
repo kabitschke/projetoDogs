@@ -1,14 +1,19 @@
-import { Metadata } from "next";
+import statsGet from '@/actions/stats-get';
+import { Metadata } from 'next';
+import DynamicComponent from './dynamicComponent';
+
 
 export const metadata: Metadata = {
-  title: 'Estatíticas | Minha Conta',
+  title: 'Estatísticas | Minha Conta',
 };
 
 export default async function EstatisticasPage() {
-  return (
-    <div>
-      <h1>Estatisticas</h1>
+  const { data } = await statsGet();
 
-    </div>
+  if (!data) return null;
+  return (
+    <section>
+      <DynamicComponent data={data} />
+    </section>
   );
 }
