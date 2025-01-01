@@ -9,16 +9,18 @@ type FotoIdParams = {
 };
 
 export async function generateMetadata({ params }: FotoIdParams) {
-  const { data } = await photoGet(params.id);
+  const resolvedParams = await params;
+  const { data } = await photoGet(resolvedParams.id);
 
-  if (!data) return { titlte: 'Fotos' };
+  if (!data) return { title: 'Fotos' };
   return {
     title: data.photo.title,
   };
 }
 
 export default async function FotoIdPage({ params }: FotoIdParams) {
-  const { data } = await photoGet(params.id);
+  const resolvedParams = await params;
+  const { data } = await photoGet(resolvedParams.id);
 
   if (!data) return notFound();
   return <FeedModal photo={data} />;
